@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <link rel="icon" href="C:/Users/anjan/Downloads/heartslogo.jpeg">
+    <style>
+        body {
+            background-image: url('C:/Users/anjan/Downloads/pinkhearts.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        input {
+            width: 350px;
+            height: 40px;
+            background-color: pink;
+            border: 2px solid black;
+            color: black;
+            text-align: center;
+            font-size: 30px;
+        }
+        [placeholder] {
+            color: black;
+        }
+        .center {
+            position: absolute;
+            top: 43%;
+            left: 25%;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="margin-top: 13%; text-align: center;">LOVE CALCULATOR💗💓💘</h1>
+    <div class="center">
+        <input type="text" id="girl" placeholder="Girl name">
+        <input type="text" id="boy" placeholder="Boy name">
+    </div><br>
+    <button style="background-color: pink; border-radius: 10px; font-size: 24px; width: 200px; height: 40px; position: absolute; left: 42%; top: 50%" onClick="cal()">Calculate</button>
+
+    <audio controls style="display: none;" id="audio1">
+        <source src="C:\Users\anjan\Downloads\You And I Song Ringtone Download - MobCup.Com.Co.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls style="display: none;" id="audio2">
+        <source src="C:/Users/anjan/Downloads/inthala.mp3" type="audio/mpeg">
+    </audio>
+    <audio controls style="display: none;" id="audio3">
+        <source src="C:/Users/anjan/Downloads/heart_broken.m4a" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function cal() {
+            var g = document.getElementById('girl').value;
+            var b = document.getElementById('boy').value;
+            var percentage = Math.floor(Math.random() * 100);
+            var audio1 = document.getElementById("audio1");
+            var audio2 = document.getElementById("audio2");
+            var audio3 = document.getElementById("audio3");
+
+            if (audio1) audio1.pause();
+            if (audio2) audio2.pause();
+            if (audio3) audio3.pause();
+
+            if (percentage >= 70) {
+                audio1.play();
+            } else if (percentage > 40 && percentage < 70) {
+                audio2.play();
+            } else {
+                audio3.play();
+            }
+
+            document.querySelector("h1").style.transition = "0.5s";
+            document.querySelector("h1").innerText = g + " 💓Loves💓 " + b + " " + percentage + "%";
+        }
+    </script>
+</body>
+</html>
