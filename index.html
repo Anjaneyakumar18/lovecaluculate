@@ -6,11 +6,14 @@
     <title>Love Calculator</title>
     <link rel="icon" href="./heartslogo.jpeg">
     <style>
+        .cout{
+            width:50%;
+            height:20%;
+        }
         body {
             background-image: url('./pinkhearts.jpg');
             background-repeat: no-repeat;
             background-size: cover;
-            height: 100%;
             margin: 0;
             padding: 0;
         }
@@ -87,6 +90,7 @@
     <audio controls style="display: none;" id="audio3">
         <source src="./heart_broken.m4a" type="audio/mpeg">
     </audio>
+    <div class="cont" style="display:none"> </div>
     <script>
         function cal() {
             var g = document.getElementById('girl').value;
