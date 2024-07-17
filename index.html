@@ -10,17 +10,21 @@
             background-image: url('./pinkhearts.jpg');
             background-repeat: no-repeat;
             background-size: cover;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
         input {
-            width: 350px;
-            height: 40px;
+            width: 60%;
+            height: 7%;
             background-color: pink;
             border: 2px solid black;
             color: black;
             text-align: center;
             font-size: 30px;
+            margin-bottom: 10%;
         }
-        [placeholder] {
+        ::placeholder {
             color: black;
         }
         .center {
@@ -28,16 +32,52 @@
             top: 43%;
             left: 25%;
         }
+        button {
+            background-color: pink;
+            border-radius: 10px;
+            font-size: 24px; 
+            width: 200px;
+            height: 40px;
+            position: absolute;
+            left: 35%;
+            top: 90%;
+        }
+        @media screen and (max-width: 500px) {
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background-image: url('./pinkhearts.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: scroll;
+            }
+            input {
+                background-color: pink;
+                margin-bottom: 10%;
+            }
+            .center {
+                position: absolute;
+                top: 40%;
+                left: 11%;
+            }
+            button {
+                position: absolute;
+                top: 87%;
+                left: 25%;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1 style="margin-top: 13%; text-align: center;">LOVE CALCULATOR💗💓💘</h1>
+    <h1 style="margin-top: 13%;text-align: center;">LOVE CALCULATOR💗💓💘</h1>
     <div class="center">
         <input type="text" id="girl" placeholder="Girl name">
-        <input type="text" id="boy" placeholder="Boy name">
-    </div><br>
-    <button style="background-color: pink; border-radius: 10px; font-size: 24px; width: 200px; height: 40px; position: absolute; left: 42%; top: 50%" onClick="cal()">Calculate</button>
-
+        <input type="text" id="boy" placeholder="Boy name"><br><br>
+        <button onClick="cal()">Calculate</button>
+    </div>
     <audio controls style="display: none;" id="audio1">
         <source src="./You And I Song Ringtone Download - MobCup.Com.Co.mp3" type="audio/mpeg">
     </audio>
@@ -47,7 +87,6 @@
     <audio controls style="display: none;" id="audio3">
         <source src="./heart_broken.m4a" type="audio/mpeg">
     </audio>
-
     <script>
         function cal() {
             var g = document.getElementById('girl').value;
