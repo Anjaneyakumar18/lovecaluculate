@@ -1,120 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Love Calculator</title>
     <link rel="icon" href="./heartslogo.jpeg">
     <style>
-        .cout{
-            width:50%;
-            height:20%;
-        }
         body {
             background-image: url('./pinkhearts.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #fff;
         }
-        input {
-            width: 60%;
-            height: 7%;
-            background-color: pink;
-            border: 2px solid black;
-            color: black;
+
+        h1 {
+            font-size: 2.5rem;
             text-align: center;
-            font-size: 30px;
-            margin-bottom: 10%;
+            margin-bottom: 20px;
+            color: #ff4081;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
         }
-        ::placeholder {
-            color: black;
-        }
+
         .center {
-            position: absolute;
-            top: 43%;
-            left: 25%;
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
-        button {
-            background-color: pink;
+
+        input {
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            height: 50px;
+            background-color: #ffccf2;
+            border: 1px solid #ff4081;
+            color: #000;
+            text-align: center;
+            font-size: 18px;
             border-radius: 10px;
-            font-size: 24px; 
-            width: 200px;
-            height: 40px;
-            position: absolute;
-            left: 35%;
-            top: 90%;
+            outline: none;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        input::placeholder {
+            color: #333;
+        }
+
+        button {
+            background-color: #ff4081;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #e91e63;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
         @media screen and (max-width: 500px) {
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
+            h1 {
+                font-size: 2rem;
             }
-            body {
-                background-image: url('./pinkhearts.jpg');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-attachment: scroll;
-            }
+
             input {
-                background-color: pink;
-                margin-bottom: 10%;
+                font-size: 16px;
+                height: 45px;
             }
-            .center {
-                position: absolute;
-                top: 40%;
-                left: 11%;
-            }
+
             button {
-                position: absolute;
-                top: 87%;
-                left: 25%;
+                font-size: 16px;
             }
         }
     </style>
 </head>
+
 <body>
-    <h1 style="margin-top: 13%;text-align: center;">LOVE CALCULATOR💗💓💘</h1>
+    <h1>LOVE CALCULATOR 💓</h1>
     <div class="center">
-        <input type="text" id="girl" placeholder="Girl name">
-        <input type="text" id="boy" placeholder="Boy name"><br><br>
+        <input type="text" id="girl" placeholder="Girl Name">
+        <input type="text" id="boy" placeholder="Boy Name">
         <button onClick="cal()">Calculate</button>
     </div>
-    <audio controls style="display: none;" id="audio1">
+
+    <audio id="audio1" style="display: none;">
         <source src="./You And I Song Ringtone Download - MobCup.Com.Co.mp3" type="audio/mpeg">
     </audio>
-    <audio controls style="display: none;" id="audio2">
+    <audio id="audio2" style="display: none;">
         <source src="./inthala.mp3" type="audio/mpeg">
     </audio>
-    <audio controls style="display: none;" id="audio3">
+    <audio id="audio3" style="display: none;">
         <source src="./heart_broken.m4a" type="audio/mpeg">
     </audio>
-    <div class="cont" style="display:none"> </div>
+
     <script>
         function cal() {
-            var g = document.getElementById('girl').value;
-            var b = document.getElementById('boy').value;
-            var percentage = Math.floor(Math.random() * 100);
-            var audio1 = document.getElementById("audio1");
-            var audio2 = document.getElementById("audio2");
-            var audio3 = document.getElementById("audio3");
+            const girl = document.getElementById('girl').value.trim();
+            const boy = document.getElementById('boy').value.trim();
+            if (!girl || !boy) return alert("Please enter both names.");
 
-            if (audio1) audio1.pause();
-            if (audio2) audio2.pause();
-            if (audio3) audio3.pause();
+            const percentage = Math.floor(Math.random() * 100);
+            const audios = [audio1, audio2, audio3];
+            audios.forEach(audio => audio.pause() && (audio.currentTime = 0));
 
-            if (percentage >= 70) {
-                audio1.play();
-            } else if (percentage > 40 && percentage < 70) {
-                audio2.play();
-            } else {
-                audio3.play();
-            }
+            if (percentage >= 70) audio1.play();
+            else if (percentage > 40) audio2.play();
+            else audio3.play();
 
-            document.querySelector("h1").style.transition = "0.5s";
-            document.querySelector("h1").innerText = g + " 💓Loves💓 " + b + " " + percentage + "%";
+            document.querySelector("h1").innerText = `${girl} 💓 Loves 💓 ${boy} ${percentage}%`;
         }
     </script>
 </body>
+
 </html>
